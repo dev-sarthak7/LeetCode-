@@ -1,34 +1,29 @@
 class Solution {
     public int minFlips(String s) {
         int n= s.length();
-        s= (s+s);
-        StringBuilder s1=new StringBuilder();
-        StringBuilder s2=new StringBuilder();
 
 
-        for(int i=0;i<2*n;i++){
-            s1.append((i%2==0)?'0':'1');
-            s2.append((i%2==0)?'1':'0');
-        }
-        s1.toString();
-        s2.toString();
         int i=0;
         int j=0;
         int flip1=0;
         int flip2=0;
         int result=Integer.MAX_VALUE;
         while(j<2*n){
-            if(s.charAt(j)!=s1.charAt(j)){
+            char expectedCharS1= (j%2==0)? '0':'1';
+            char expectedCharS2= (j%2==0)? '1':'0';
+            if(s.charAt(j%n)!=expectedCharS1){
                 flip1++;
             }
-            if(s.charAt(j)!=s2.charAt(j)){
+            if(s.charAt(j%n)!=expectedCharS2){
                 flip2++;
             }
             if(j-i+1>n){
-                if(s.charAt(i)!=s1.charAt(i)){
+                expectedCharS1= (i%2==0)? '0':'1';
+                expectedCharS2= (i%2==0)? '1':'0';
+                if(s.charAt(i%n)!=expectedCharS1){
                     flip1--;
                 }
-                if(s.charAt(i)!=s2.charAt(i)){
+                if(s.charAt(i%n)!=expectedCharS2){
                     flip2--;
                 }
                 i++;
