@@ -5,19 +5,18 @@ class Solution {
             integers.add(Integer.parseInt(num, 2));
         }
         
-        int ans = Integer.parseInt(nums[0], 2);
         int n = nums.length;
-        Random rand = new Random();
-        
-        while (integers.contains(ans)) {
-            ans = rand.nextInt((int) Math.pow(2, n));
+        for (int num = 0; num <= n; num++) {
+            if (!integers.contains(num)) {
+                String ans = Integer.toBinaryString(num);
+                while (ans.length() < n) {
+                    ans = "0" + ans;
+                }
+                
+                return ans;
+            }
         }
-
-        String s = Integer.toBinaryString(ans);
-        while (s.length() < n) {
-            s = "0" + s;
-        }
         
-        return s;
+        return "";
     }
 }
