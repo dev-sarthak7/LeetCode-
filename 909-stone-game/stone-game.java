@@ -15,19 +15,20 @@ class Solution {
         return dp[i][j]=Math.max(take_i,take_j);
     }
     public boolean stoneGame(int[] piles) {
-        int sum=0;
-        for(int x: piles){
-            sum+=x;
-        }
-        int n= piles.length;
-        int i=0;
-        int j= n-1;
-        int[][] dp= new int[n][n];
-        for(int [] arr: dp){
-            Arrays.fill(arr,-1);
-        }
-        int alice= solve(i,j,piles,dp);
-        int bob= sum-alice;
-        return alice>=bob;
+        // int sum=0;
+        // for(int x: piles){
+        //     sum+=x;
+        // }
+        // int n= piles.length;
+        // int i=0;
+        // int j= n-1;
+        // int[][] dp= new int[n][n];
+        // for(int [] arr: dp){
+        //     Arrays.fill(arr,-1);
+        // }
+        // int alice= solve(i,j,piles,dp);
+        // int bob= sum-alice;
+        // return alice>=bob;
+        return true;
     }
 }
