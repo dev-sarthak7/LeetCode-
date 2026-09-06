@@ -11,14 +11,12 @@ class Solution {
         if(dp[i][j]!=-1){
             return dp[i][j];
         }
-        int one=0;
+
         if(s1[i]==s2[j]){
-            one=1+solve(i+1,j+1);
+            return dp[i][j]=1+solve(i+1,j+1);
         }
-        int two= solve(i,j+1);
-        int three= solve(i+1,j);
-        int four= solve(i+1,j+1);
-        return dp[i][j]=Math.max(Math.max(one,two),Math.max(three,four));
+       
+        return dp[i][j]=Math.max(solve(i+1,j),solve(i,j+1));
     }
     public int longestCommonSubsequence(String text1, String text2) {
         n1=text1.length();
