@@ -5,6 +5,9 @@ class Solution {
         if(i==n-1){
             return list.get(i).get(j);
         }
+        if(i>=n){
+            return 0;
+        }
        
         if(dp[i][j]!=Integer.MAX_VALUE){
             return dp[i][j];
