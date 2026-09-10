@@ -1,23 +1,33 @@
 class Solution {
-    static int dfs(int[][] dp, int r,int c, int m,int n){
-        if(r<0 || r>=m || c<0 || c>=n){
-            return 0;
-        }
-        if(r==m-1 && c==n-1){
+    int r;
+    int c;
+    int [][] dp;
+    int solve(int i, int j){
+        if(i==r-1 && j==c-1){
             return 1;
         }
-        if(dp[r][c]!=-1){
-            return dp[r][c];
+        if(i>=r || j>=c){
+            return 0;
         }
-        dp[r][c]=dfs(dp,r+1,c,m,n)+ dfs(dp,r,c+1,m,n);
+        if(dp[i][j]!=-1){
+            return dp[i][j];
+        }
+        if(i==r-1){
+            return dp[i][j]=solve(i,j+1);
+        }
+        if(j==c-1){
+            return dp[i][j]=solve(i+1,j);
+        }
+        return dp[i][j]=solve(i+1,j)+ solve(i,j+1);
 
-        return dp[r][c];
     }
     public int uniquePaths(int m, int n) {
-        int [][] dp= new int[m][n];
-        for(int i=0;i<m;i++){
-            Arrays.fill(dp[i],-1);
+        r=m;
+        c=n;
+        dp= new int[m][n];
+        for(int [] arr:dp){
+            Arrays.fill(arr,-1);
         }
-        return dfs(dp,0,0,m,n);
+        return solve(0,0);
     }
 }
